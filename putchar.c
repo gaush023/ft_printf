@@ -1,22 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_char.c                                       :+:      :+:    :+:   */
+/*   putchar.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: shuga <shuga@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/02 17:32:00 by sagemura          #+#    #+#             */
-/*   Updated: 2023/07/04 06:09:05 by shuga            ###   ########.fr       */
+/*   Created: 2023/07/04 00:55:15 by shuga             #+#    #+#             */
+/*   Updated: 2023/07/04 03:39:00 by shuga            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	print_char( va_list args)
+int	ft_putchar(char c)
 {
-	char	c;
-
-	c = (char)va_arg(args, int);
 	if (write(1, &c, 1) == -1)
 		return (-1);
 	return (1);

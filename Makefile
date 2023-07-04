@@ -3,48 +3,41 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: sagemura <sagemura@student.42.fr>          +#+  +:+       +#+         #
+#    By: shuga <shuga@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/29 21:46:34 by sagemura          #+#    #+#              #
-#    Updated: 2023/07/02 17:30:31 by sagemura         ###   ########.fr        #
+#    Updated: 2023/07/04 00:58:56 by shuga            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libftprintf.a
+LIBFTNAME = libft.a
 
-SRCS = ft_printf.c
-
-
+SRCS = ft_printf.c print_char.c print_demical.c print_hex.c print_string.c\
+	   unsigned_decimal_print.c putchar.c
+	   	   
 OBJS = $(SRCS:.c=.o)
 
-
 CC = cc
-CFLAGS = -Wall -Wextra -Werror
-AR = ar
-
-LINFT = libft/libft.al
-LFLAGS = -Llibft -lft
+CFLAGS = -Wall -Werror -Wextra
+LIBFTDIR = ./libft
 
 all: $(NAME)
 
+makelibft:
+	@make -C $(LIBFTDIR)
+	@cp $(LIBFTDIR)/$(LIBFTNAME) .
+	@mv $(LIBFTNAME) $(NAME)
 
-$(NAME): $(OBJS)
-	$(AR) rcs $@ $^
+$(NAME): makelibft $(OBJS)
+	@ar -r $(NAME) $(OBJS)
 
-
-$(LIBFT)
-	make -C libft
-
-%.o: %.c
-	$(CC) $(CFLAGS) -c $< -o $@
-
-	
 clean:
-	rm -f $(OBJS) 
-
+	@rm -f $(OBJS)
+	@cd $(LIBFTDIR) && make clean
+	
 fclean: clean
-	rm -f $(NAME) 
-
+	@rm -f $(NAME)
+	@cd $(LIBFTDIR) && make fclean
+	
 re: fclean all
-
-.PHONY: all clean fclean re bonus

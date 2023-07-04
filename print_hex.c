@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   print_hex.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sagemura <sagemura@student.42.fr>          +#+  +:+       +#+        */
+/*   By: shuga <shuga@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/02 19:10:10 by sagemura          #+#    #+#             */
-/*   Updated: 2023/07/02 20:19:02 by sagemura         ###   ########.fr       */
+/*   Updated: 2023/07/04 00:47:26 by shuga            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,12 +26,15 @@ static void	transform_hex(int original_n, char *buffer, size_t *i)
 		buffer[(*i)++] = 'A' + remainder - 10;
 }
 
-void	print_hex(va_list args, int n)
+
+
+size_t	print_hex(va_list args, int n)
 {
 	int		original_n;
 	char	buffer[33];
 	size_t	i;
 	size_t	j;
+	size_t  k;
 
 	original_n = va_arg(args, int);
 	i = 0;
@@ -47,4 +50,5 @@ void	print_hex(va_list args, int n)
 		}
 	}
 	ft_putstr_fd(buffer, 1);
+	return (k = ft_strlen(buffer));
 }

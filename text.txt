@@ -1,0 +1,12 @@
+Makefile
+a.out
+ft_printf.c
+ft_printf.h
+libft
+print_char.c
+print_demical.c
+print_hex.c
+print_string.c
+test.c
+text.txt
+unsigned_decimal_print.c
