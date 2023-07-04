@@ -1,24 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_char.c                                       :+:      :+:    :+:   */
+/*   print_void_hex.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sagemura <sagemura@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/04 18:12:14 by sagemura          #+#    #+#             */
-/*   Updated: 2023/07/04 18:12:15 by sagemura         ###   ########.fr       */
+/*   Created: 2023/07/04 18:12:02 by sagemura          #+#    #+#             */
+/*   Updated: 2023/07/04 19:55:19 by sagemura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-
 #include "ft_printf.h"
 
-int	print_char( va_list args)
+size_t	print_void_hex(va_list args)
 {
-	char	c;
+	char			ptr[33];
+	long long int	original_n;
+	size_t			n;
+	size_t			length;
 
-	c = (char)va_arg(args, int);
-	if (write(1, &c, 1) == -1)
-		return (-1);
-	return (1);
+	original_n = va_arg(args, int);
+	n = 0;
+	transform_hex(original_n, ptr, &n);
+	ptr[n] = '\0';
+	ft_putstr_fd(ptr, 1);
+	return (length = ft_strlen(ptr));
 }

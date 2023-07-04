@@ -1,24 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_char.c                                       :+:      :+:    :+:   */
+/*   transform_hex.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sagemura <sagemura@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/04 18:12:14 by sagemura          #+#    #+#             */
-/*   Updated: 2023/07/04 18:12:15 by sagemura         ###   ########.fr       */
+/*   Created: 2023/07/04 19:41:35 by sagemura          #+#    #+#             */
+/*   Updated: 2023/07/04 19:42:02 by sagemura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-
 #include "ft_printf.h"
 
-int	print_char( va_list args)
+void	transform_hex(int original_n, char *buffer, size_t *i)
 {
-	char	c;
+	int	remainder;
 
-	c = (char)va_arg(args, int);
-	if (write(1, &c, 1) == -1)
-		return (-1);
-	return (1);
+	remainder = original_n % 16;
+	original_n = original_n / 16;
+	if (original_n > 0)
+		transform_hex(original_n, buffer, i);
+	if (remainder >= 0 && remainder <= 9)
+		buffer[(*i)++] = '0' + remainder;
+	else
+		buffer[(*i)++] = 'A' + remainder - 10;
 }

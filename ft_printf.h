@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: shuga <shuga@student.42.fr>                +#+  +:+       +#+        */
+/*   By: sagemura <sagemura@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/02 16:46:42 by sagemura          #+#    #+#             */
-/*   Updated: 2023/07/04 04:33:39 by shuga            ###   ########.fr       */
+/*   Updated: 2023/07/04 19:52:16 by sagemura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,11 @@ typedef struct s_format
 int				ft_printf(const char *format, ...);
 int				print_char(va_list args);
 int				ft_putchar(char c);
-size_t			print_string(va_list args);
+void			transform_hex(int original_n, char *buffer, size_t *i);
 size_t			print_demical(va_list args);
+size_t			print_void_hex(va_list args);
 size_t			print_hex(va_list args, int n);
+size_t			print_string(va_list args);
 size_t			unsigned_decimal_print(va_list args);
 
 #endif

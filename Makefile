@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: shuga <shuga@student.42.fr>                +#+  +:+       +#+         #
+#    By: sagemura <sagemura@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/29 21:46:34 by sagemura          #+#    #+#              #
-#    Updated: 2023/07/04 00:58:56 by shuga            ###   ########.fr        #
+#    Updated: 2023/07/04 19:50:42 by sagemura         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,8 +14,8 @@ NAME = libftprintf.a
 LIBFTNAME = libft.a
 
 SRCS = ft_printf.c print_char.c print_demical.c print_hex.c print_string.c\
-	   unsigned_decimal_print.c putchar.c
-	   	   
+	   unsigned_decimal_print.c putchar.c transform_hex.c print_void_hex.c
+
 OBJS = $(SRCS:.c=.o)
 
 CC = cc

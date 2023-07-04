@@ -6,7 +6,7 @@
 /*   By: sagemura <sagemura@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/02 16:49:09 by sagemura          #+#    #+#             */
-/*   Updated: 2023/07/04 08:52:49 by sagemura         ###   ########.fr       */
+/*   Updated: 2023/07/04 19:48:42 by sagemura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static int	help_distinction(const char *format)
 	size_t	n;
 
 	n = 0;
-	compare_ptr = "csduxX%";
+	compare_ptr = "cspduxX%";
 	while (compare_ptr[n])
 	{
 		if (*format == compare_ptr[n])
@@ -31,64 +31,34 @@ static int	help_distinction(const char *format)
 
 static ssize_t	distinciton(t_format *format, va_list args)
 {
-	ssize_t status = -1;
-
 	if (*(format->str + format->index) == '%')
 	{
-		if (help_distinction(format->str + format->index + 1) == 0) // Check the next character instead
+		if (help_distinction(format->str + format->index + 1) == 0)
 		{
 			format->index++;
 			if (*(format->str + format->index) == 'c')
-			{
-				status = print_char(args);
-				format->index++;
-			}
+				return (print_char(args));
 			else if (*(format->str + format->index) == 's')
-			{
-				status = print_string(args);
-				format->index++;
-			}
-			else if (*(format->str + format->index) == 'd' || *(format->str + format->index) == 'i')
-			{
-				status = print_demical(args);
-				format->index++;
-			}
+				return (print_string(args));
+			else if (*(format->str + format->index) == 'p')
+				return (print_void_hex(args));
+			else if (*(format->str + format->index) == 'd' || *(format->str
+						+ format->index) == 'i')
+				return (print_demical(args));
 			else if (*(format->str + format->index) == 'u')
-			{
-				status = unsigned_decimal_print(args);
-				format->index++;
-			}
+				return (unsigned_decimal_print(args));
 			else if (*(format->str + format->index) == 'x')
-			{
-				status = print_hex(args, 0);
-				format->index++;
-			}
+				return (print_hex(args, 0));
 			else if (*(format->str + format->index) == 'X')
-			{
-				status = print_hex(args, 1);
-				format->index++;
-			}
+				return (print_hex(args, 1));
 			else if (*(format->str + format->index) == '%')
-			{
-				status = ft_putchar('%');
-				format->index++;
-			}
-			return status;
+				return (ft_putchar('%'));
 		}
 		else
-		{
-			status = ft_putchar('%');
-			format->index++; // Ensure that '%' is also incremented.
-		}
+			return (ft_putchar('%'));
 	}
-	else
-	{
-		status = ft_putchar(*(format->str + format->index));
-		format->index++;
-	}
-	return status;
+	return (ft_putchar(*(format->str + format->index)));
 }
-
 
 int	ft_printf(const char *format, ...)
 {
