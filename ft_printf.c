@@ -6,7 +6,7 @@
 /*   By: sagemura <sagemura@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/02 16:49:09 by sagemura          #+#    #+#             */
-/*   Updated: 2023/07/05 18:04:23 by sagemura         ###   ########.fr       */
+/*   Updated: 2023/07/05 18:45:50 by sagemura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ static ssize_t	do_distinction(t_format *format, va_list args)
 	else if (*(format->str + format->index) == 'p')
 		return (print_void_hex(args));
 	else if (*(format->str + format->index) == 'd' || *(format->str
-			+ format->index) == 'i')
+				+ format->index) == 'i')
 		return (print_demical(args));
 	else if (*(format->str + format->index) == 'u')
 		return (unsigned_decimal_print(args));
@@ -50,7 +50,7 @@ static ssize_t	do_distinction(t_format *format, va_list args)
 	else if (*(format->str + format->index) == '%')
 		return (ft_putchar('%'));
 	else
-		return (ft_putchar('%'));
+		return (-1);
 }
 
 static ssize_t	distinction(t_format *format, va_list args)
@@ -59,6 +59,8 @@ static ssize_t	distinction(t_format *format, va_list args)
 	{
 		if (help_distinction(format->str + format->index + 1) == 0)
 			return (do_distinction(format, args));
+		else
+			return (-1);
 	}
 	return (ft_putchar(*(format->str + format->index)));
 }
