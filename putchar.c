@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   putchar.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: shuga <shuga@student.42.fr>                +#+  +:+       +#+        */
+/*   By: sagemura <sagemura@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/04 00:55:15 by shuga             #+#    #+#             */
-/*   Updated: 2023/07/04 03:39:00 by shuga            ###   ########.fr       */
+/*   Updated: 2023/07/05 19:19:14 by sagemura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 
 int	ft_putchar(char c)
 {
+	if (!ft_isascii(c))
+		return (-1);
 	if (write(1, &c, 1) == -1)
 		return (-1);
 	return (1);
