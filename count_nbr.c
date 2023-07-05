@@ -1,34 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_demical.c                                    :+:      :+:    :+:   */
+/*   count_nbr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sagemura <sagemura@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/02 18:47:48 by sagemura          #+#    #+#             */
-/*   Updated: 2023/07/05 18:12:15 by sagemura         ###   ########.fr       */
+/*   Created: 2023/07/05 18:11:47 by sagemura          #+#    #+#             */
+/*   Updated: 2023/07/05 18:13:42 by sagemura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-// #include <stdio.h>
-// #include <limits.h>
 
-// int	main(void)
-// {
-// 	int		n;
-// 	size_t	length;
-
-// 	n = INT_MIN;
-// 	length = count_nbr(n);
-// 	printf("%zu", length);
-// }
-
-size_t	print_demical(va_list args)
+size_t	count_nbr(long n)
 {
-	int		n;
+	size_t	length;
 
-	n = va_arg(args, int);
-	ft_putnbr_fd(n, 1);
-	return (count_nbr(n));
+	length = 0;
+	if (n < 0)
+	{
+		n = n * -1;
+		length++;
+	}
+	while (n >= 10)
+	{
+		n = n / 10;
+		length++;
+	}
+	length++;
+	return (length);
 }

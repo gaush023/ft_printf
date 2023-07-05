@@ -6,7 +6,7 @@
 /*   By: sagemura <sagemura@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/02 15:42:52 by sagemura          #+#    #+#             */
-/*   Updated: 2023/07/04 18:28:43 by sagemura         ###   ########.fr       */
+/*   Updated: 2023/07/05 17:19:13 by sagemura         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,15 +15,10 @@
 
 int	main(void)
 {
-	printf("%p\n", "A");
-	printf("%p\n", "a");
-	printf("%p\n", "0");
-	printf("%p\n", "aa");
-	printf("%p\n", "AA");
-	printf("%p\n", "00");
-	printf("%p\n", ((void *)0));
-	printf("%p\n", ((void *)1));
-
+	printf("%d\n", 10);
+	ft_printf("%d\n", 10);
+	// printf("print hex:%lx\n", 4340227996);
+	// ft_printf("%lx\n", 4340227996);
 }
 
 // int	main(void)
